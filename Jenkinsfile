@@ -22,7 +22,7 @@ pipeline {
             steps {
                 script {
                     env.JAVA_OPTS = "-Xmx2048m"
-                    env.MAVEN_OPTS = "-Xmx2048m -XX:MaxPermSize=512m"
+                    env.MAVEN_OPTS = "-Xmx2048m"
                 }
                 bat 'mvn clean install'
             }
