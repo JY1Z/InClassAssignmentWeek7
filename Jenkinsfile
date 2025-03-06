@@ -50,7 +50,8 @@ pipeline {
                     steps {
                         // Build Docker image
                         script {
-                            docker.build("${DOCKERHUB_REPO}:${DOCKER_IMAGE_TAG}")
+//                             docker.build("${DOCKERHUB_REPO}:${DOCKER_IMAGE_TAG}")
+                            def myImage = docker.build("${DOCKERHUB_REPO}:${DOCKER_IMAGE_TAG}")
                         }
                     }
                 }
@@ -59,7 +60,9 @@ pipeline {
                         // Push Docker image to Docker Hub
                         script {
                             docker.withRegistry('https://index.docker.io/v1/', DOCKERHUB_CREDENTIALS_ID) {
-                                docker.image("${DOCKERHUB_REPO}:${DOCKER_IMAGE_TAG}").push()
+//                                 docker.image("${DOCKERHUB_REPO}:${DOCKER_IMAGE_TAG}").push()
+                                def myImage = docker.image("${DOCKERHUB_REPO}:${DOCKER_IMAGE_TAG}")
+                                myImage.push()
                             }
                         }
                     }
