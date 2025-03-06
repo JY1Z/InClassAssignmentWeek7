@@ -30,7 +30,9 @@ pipeline {
         }
         stage('Code Coverage') {
             steps {
-                sh 'mvn jacoco:report'
+//                 sh 'mvn jacoco:report'
+                 bat 'echo Hello, Jenkins!'
+
             }
         }
         stage('Publish Test Results') {
